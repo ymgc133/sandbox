@@ -1,0 +1,31 @@
+name: Simple Workflow on Self-hosted Runner
+
+on:
+  workflow_run:
+    workflows: ["main.yml"]
+    types: [completed]
+
+jobs:
+  job1:
+    outputs:
+      line2: ${{ steps.job1.outputs.line2 }}
+
+
+    runs-on: [self-hosted,r1]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        id: job1
+        shell: powershell
+        run: |
+          $line2 = Get-Content C:\GHA\sandbox\files\memo.txt -TotalCount 2 | Select-Object -Last 1
+          Write-Host ">>> low2 : '$line2'"
+          echo "line2=$line2" >> $GITHUB_OUTPUT
+
+  job2:
+    needs: job1
+    runs-on: [self-hosted,r1]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run one-line script
+        run: echo $job1.outputs.line2

@@ -1,4 +1,4 @@
-name: Simple Workflow on Self-hosted Runner
+name: wf1
 
 on:
   push:

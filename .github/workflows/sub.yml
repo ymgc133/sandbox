@@ -1,9 +1,9 @@
-name: Sub Workflow on Self-hosted Runner
+name: wf2
 
 on:
   workflow_run:
     workflows: 
-      - "Simple Workflow on Self-hosted Runner"
+      - "wf1"
     types: [completed]
 
 jobs:

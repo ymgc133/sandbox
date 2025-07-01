@@ -7,12 +7,20 @@ on:
 
 jobs:
   job1:
+    outputs:
+      line2: ${{ steps.read-line.outputs.line2 }}
+
+
     runs-on: [self-hosted,r1]
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo "job1 is running on self-hosted runner 1"
-  
+        id: read-line
+        shell: pwsh
+        run: |
+          $line2 = Get-Content C:\GHA\sandbox\files\memo.txt -TotalCount 2 | Select-Object -Last 1
+          echo "line2=$line2" >> $GITHUB_OUTPUT
+
   job2:
     needs: job1
     runs-on: [self-hosted,r1]

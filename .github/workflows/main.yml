@@ -27,4 +27,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run one-line script
-        run: echo "job2 is running on self-hosted runner 1 after job1"
+        run: echo $line2

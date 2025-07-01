@@ -19,7 +19,7 @@ jobs:
         shell: powershell
         run: |
           $line2 = Get-Content C:\GHA\sandbox\files\memo.txt -TotalCount 2 | Select-Object -Last 1
-          Write-Host ">>> 2行目の内容: '$line2'"
+          Write-Host ">>> low2 : '$line2'"
           echo "line2=$line2" >> $GITHUB_OUTPUT
 
   job2:

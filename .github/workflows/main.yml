@@ -8,14 +8,14 @@ on:
 jobs:
   job1:
     outputs:
-      line2: ${{ steps.read-line.outputs.line2 }}
+      line2: ${{ steps.job1.outputs.line2 }}
 
 
     runs-on: [self-hosted,r1]
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        id: read-line
+        id: job1
         shell: pwsh
         run: |
           $line2 = Get-Content C:\GHA\sandbox\files\memo.txt -TotalCount 2 | Select-Object -Last 1

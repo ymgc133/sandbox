@@ -1,3 +1,6 @@
+permissions:
+  contents: read
+
 name: wf2
 
 on:

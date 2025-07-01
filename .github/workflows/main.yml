@@ -6,17 +6,17 @@ on:
       - test
 
 jobs:
-  run-on-self-hosted:
+  job1:
     runs-on: [self-hosted,r1]
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo "Hello from self-hosted runner !"
+        run: echo "job1 is running on self-hosted runner 1"
   
-  step2:
-    needs: run-on-self-hosted
+  job2:
+    needs: job1
     runs-on: [self-hosted,r1]
     steps:
       - uses: actions/checkout@v4
       - name: Run one-line script
-        run: echo "Hello from self-hosted runner 2"
+        run: echo "job2 is running on self-hosted runner 1 after job1"

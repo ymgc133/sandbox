@@ -1,1 +1,14 @@
+name: Simple Workflow on Self-hosted Runner
 
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  run-on-self-hosted:
+    runs-on: [self-hosted,r1]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo "Hello from self-hosted runner!"

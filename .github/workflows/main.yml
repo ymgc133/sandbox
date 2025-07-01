@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a one-line script
         id: job1
-        shell: pwsh
+        shell: powershell
         run: |
           $line2 = Get-Content C:\GHA\sandbox\files\memo.txt -TotalCount 2 | Select-Object -Last 1
           echo "line2=$line2" >> $GITHUB_OUTPUT

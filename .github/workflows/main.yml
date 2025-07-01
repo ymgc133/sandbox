@@ -14,8 +14,9 @@ jobs:
         run: echo "Hello from self-hosted runner !"
   
   step2:
+    needs: run-on-self-hosted
     runs-on: [self-hosted,r1]
     steps:
       - uses: actions/checkout@v4
       - name: Run one-line script
-        run: echo "Hello from self-hosted runner 2 !    
+        run: echo "Hello from self-hosted runner 2 !

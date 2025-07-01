@@ -1,8 +1,9 @@
-name: Simple Workflow on Self-hosted Runner
+name: Sub Workflow on Self-hosted Runner
 
 on:
   workflow_run:
-    workflows: ["main.yml"]
+    workflows: 
+      - "Simple Workflow on Self-hosted Runner"
     types: [completed]
 
 jobs:

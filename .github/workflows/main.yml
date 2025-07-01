@@ -1,1 +1,15 @@
+name: Self-hosted Runner Workflow
 
+on:
+    push:
+        branches:
+            - test
+jobs:
+    build:
+        runs-on: [self-hosted,r1]
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+
+          - name: Run a sample script
+            run: echo "Hello from self-hosted runner!"

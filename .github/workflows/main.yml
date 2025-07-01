@@ -27,4 +27,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run one-line script
-        run: echo $line2
+        run: echo $job1.outputs.line2
